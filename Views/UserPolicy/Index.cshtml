@@ -1,0 +1,65 @@
+﻿@model IEnumerable<InsuranceMVC.Models.Policy>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/PolicyLayout.cshtml";
+}
+
+<h1>Welcome ,@ViewBag.UserName, Policy Details</h1>
+
+<p>
+    <a asp-action="Create">Create New Policy</a>
+</p>
+<table class="table" width="100%" border="1">
+    <thead>
+        <tr>
+            <th>
+                PolicyId
+            </th>
+            <th>
+                PolicyType
+            </th>
+            <th>
+                CoverageAmount
+            </th>
+            <th>
+                PremiumAmount
+            </th>
+            <th>
+                ValidityStartDate
+            </th>
+            <th>
+                ValidityEndDate
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PolicyId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PolicyType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CoverageAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PremiumAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValidityStartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValidityEndDate)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.PolicyId">Details</a> 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

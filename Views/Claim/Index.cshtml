@@ -1,0 +1,66 @@
+﻿@model IEnumerable<InsuranceMVC.Models.Claim>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/ClaimLayout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New Claim</a>
+</p>
+<table class="table" width="100%" border="1">
+    <thead>
+        <tr>
+            <th>
+                ClaimId
+            </th>
+            <th>
+                PolicyId
+            </th>
+            <th>
+                ClaimAmount
+            </th>
+            <th>
+                ClaimStatus
+            </th>
+            <th>
+                SubmissionDate
+            </th>
+            <th>
+                SettlementDate
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClaimId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PolicyId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClaimAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClaimStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubmissionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SettlementDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ClaimId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ClaimId">Details</a> 
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
